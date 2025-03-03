@@ -21,8 +21,13 @@ export default function Navbar() {
       if(luser.val()){
 
         //Nos crea un arreglo de las llaves de los usuarios
-        //Object.keys(user.val()[0]);
-        setLocalUser(luser.val()[Object.keys(luser.val())[0]]);
+        //Object.keys(luser.val()[0]);
+        //setLocalUser(luser.val()[Object.keys(luser.val())[0]]);
+
+        const userData = luser.val();
+        const userKeys = Object.keys(userData);
+
+        setLocalUser(userData[userKeys[0]]);
       }
 
       //console.log(luser.val());
@@ -31,7 +36,7 @@ export default function Navbar() {
       //console.log(luser2);
 
       if(!luser2.empty){
-        console.log(luser2.docs[0].data);
+        console.log(luser2.docs[0].data());
       }
     }
 
