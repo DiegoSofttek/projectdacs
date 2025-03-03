@@ -1,7 +1,8 @@
 import { Button, Row, Col, Input } from 'antd';
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { signInUser } from '../config/authCall';
 import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login({mail}) {
 
@@ -10,6 +11,11 @@ export default function Login({mail}) {
     const {user} = useAuth();
     const [userName, setUserName] = useState(mail);
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if(user) navigate('/home');
+    }, [user]);
 
     const changeUserName = (inputValue) => {
         //console.log(inputValue);
